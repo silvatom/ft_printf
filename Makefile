@@ -4,8 +4,7 @@ CC=		clang
 
 FLAGS=	-Wall -Wextra -Werror
 
-SRCS=	main.c \
-		ft_printf.c \
+SRCS=	ft_printf.c \
 		ft_printf_utils.c \
 		ft_convert_p.c \
 		ft_convert_x.c \
