@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_d_i.c                                   :+:      :+:    :+:   */
+/*   ft_convert_p.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/24 16:03:47 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/09/24 16:46:33 by anjose-d         ###   ########.fr       */
+/*   Created: 2021/09/24 16:04:12 by anjose-d          #+#    #+#             */
+/*   Updated: 2021/09/25 00:10:31 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_convert_d_i(long int nbr, unsigned int base_n)
+int	ft_convert_p(size_t nbr, size_t base_n)
 {
-	long int	tmp;
-	int			nbr_len;
+	int	nbr_s;
 
-	tmp = nbr;
-	nbr_len = 0;
-	if (nbr < 0)
-	{
-		write (1, "-", 1);
-		nbr = nbr * (-1);
-		nbr_len++;
-	}
-	nbr_len += ft_print_number(nbr, base_n, "0123456789");
-	return (nbr_len);
+	if (nbr == 0)
+		return (write(1, "(nil)", 5));
+	nbr_s = write(1, "0x", 2);
+	nbr_s += ft_print_number(nbr, base_n, "0123456789abcdef");
+	return (nbr_s);
 }
