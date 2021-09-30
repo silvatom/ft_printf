@@ -6,20 +6,27 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:04:40 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/09/24 17:19:40 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/09/30 18:46:40 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_fspec(const char *format, va_list args, unsigned int flen)
+void	ft_subspec_init(void);
+const char	*ft_subspec(const char *format);
+const char *ft_get_subspec(const char *format);
+
+int	ft_fspec(const char *format, va_list args)
 {
+	int flen;
+
+	flen = 0;
 	if (*format == 'c')
-		flen += ft_putchar(va_arg(args, int));
+		flen += ft_convert_c(va_arg(args, int));
 	else if (*format == 's')
-		flen += ft_putstr(va_arg(args, char *));
+		flen += ft_convert_s(va_arg(args, char *));
 	else if (*format == 'p')
-		flen += ft_convert_p(va_arg(args, size_t), 16);
+		flen += ft_convert_p(va_arg(args, long long), 16);
 	else if (*format == 'd' || *format == 'i')
 		flen += ft_convert_d_i(va_arg(args, int), 10);
 	else if (*format == 'u')
@@ -45,15 +52,71 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			flen = ft_fspec(format, args, flen);
+			format = ft_subspec(format);
+			if (!*format)
+				break;
+			flen += ft_fspec(format, args);
 			format++;
 		}
 		else
 		{
-			write(1, &*format, 1);
+			flen += write(1, &*format, 1);
 			format++;
-			flen++;
 		}
 	}
 	return (flen);
+}
+
+void	ft_subspec_init(void)
+{
+	t_subspec.is_msign = FALSE;
+	t_subspec.is_psign = FALSE;
+	t_subspec.is_zero = FALSE;
+	t_subspec.is_space = FALSE;
+	t_subspec.is_hash = FALSE;
+	t_subspec.is_dot = FALSE;
+	t_subspec.width = 0;
+	t_subspec.precision = 0;
+}
+
+const char	*ft_subspec(const char *format)
+{
+	ft_subspec_init();
+	while (*format && (*format == '-' || *format == '+'	||
+		*format == ' ' || *format == '#' || *format == '.' ||
+		(*format >= '0' && *format <= '9')))
+	{
+		format = ft_get_subspec(format);
+		format++;
+	}
+	return (format);
+}
+
+const char *ft_get_subspec(const char *format)
+{
+	if (*format == '-')
+		t_subspec.is_msign = TRUE;
+	else if (*format == '+')
+		t_subspec.is_psign = TRUE;
+	else if (*format == '0')
+		t_subspec.is_zero = TRUE;
+	else if (*format == ' ')
+		t_subspec.is_space = TRUE;
+	else if (*format == '#')
+		t_subspec.is_hash = TRUE;
+	else if (*format == '.')
+	{
+		format++;
+		t_subspec.is_dot = TRUE;
+		t_subspec.precision = ft_atoi(format);
+		return (format);
+	}
+	else if (*format >= '0' && *format <= '9')
+	{
+		t_subspec.width = ft_atoi(format);
+		while (*(format + 1) >= '0' && *(format + 1) <= '9')
+			format++;
+		return (format);
+	}
+	return (format);
 }

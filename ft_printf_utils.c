@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-size_t	ft_power(size_t number, unsigned long int power)
+unsigned long long	ft_power(long long number, long int power)
 {
 	if (power == 0)
 		return (1);
@@ -8,13 +8,15 @@ size_t	ft_power(size_t number, unsigned long int power)
 	return (number);
 }
 
-int	ft_print_number(size_t nbr, size_t base_n, char *base)
+int	ft_print_number(long long nbr, long long base_n, char *base)
 {
-	int		nbr_s;
-	size_t	tmp;
-	int		n_print;
-	int		ret;
+	int			nbr_s;
+	long long int	tmp;
+	long long int	n_print;
+	int			ret;
 
+	if (nbr < 0)
+		nbr *= (-1);
 	nbr_s = 1;
 	ret = 0;
 	tmp = nbr;
@@ -48,4 +50,55 @@ int	ft_putstr(char *str)
 int	ft_putchar(char c)
 {
 	return (write(1, &c, 1));
+}
+
+int	ft_atoi(const char *str)
+{
+	int	i;
+	int	sign;
+	int	num;
+
+	i = 0;
+	sign = 1;
+	num = 0;
+	while ((9 <= str[i] && str[i] <= 13) || str[i] == ' ')
+		i++;
+	if (str[i] == '-')
+		sign = sign * (-1);
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while ('0' <= str[i] && str[i] <= '9')
+	{
+		num = (num * 10) + (str[i] - '0');
+		i++;
+	}
+	return (num * sign);
+}
+
+int	ft_print_width(char chr, int i)
+{
+	int	count;
+
+	count = 0;
+	while (i > 0)
+	{
+		count += write(1, &chr, 1);
+		i--;
+	}
+	return (count);
+}
+
+int ft_nbrsize(long long nbr, long long base_n)
+{
+	size_t	ret;
+
+	if (nbr < 0)
+		nbr *= (-1);
+	ret = 0;
+	while (nbr > 0)
+	{
+		nbr /= base_n;
+		ret++;
+	}
+	return (ret);
 }
