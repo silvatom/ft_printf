@@ -8,11 +8,11 @@ unsigned long long	ft_power(long long number, long int power)
 	return (number);
 }
 
-int	ft_print_number(long long nbr, long long base_n, char *base)
+int	ft_print_number(unsigned long long nbr, unsigned long long base_n, char *base)
 {
 	int			nbr_s;
-	long long int	tmp;
-	long long int	n_print;
+	unsigned long long int	tmp;
+	unsigned long long int	n_print;
 	int			ret;
 
 	if (nbr < 0)
@@ -88,7 +88,7 @@ int	ft_print_width(char chr, int i)
 	return (count);
 }
 
-int ft_nbrsize(long long nbr, long long base_n)
+int ft_nbrsize(unsigned long long nbr, unsigned long long base_n)
 {
 	size_t	ret;
 

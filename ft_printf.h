@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:08:14 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/09/30 19:25:35 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/09/30 19:44:47 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,16 @@ int	ft_printf(const char *format, ...);
 int	ft_convert_d_i(long int nbr, unsigned int base_n);
 int	ft_convert_x(unsigned int nbr, unsigned int base_n, char b);
 int ft_convert_u(unsigned int nbr, unsigned int base_n);
-int	ft_convert_p(long long nbr, long long base_n);
+int	ft_convert_p(unsigned long long nbr, unsigned long long base_n);
 
 unsigned long long	ft_power(long long number, long int power);
-int	ft_print_number(long long nbr, long long base_n, char *base);
+int	ft_print_number(unsigned long long nbr, unsigned long long base_n, char *base);
 int	ft_putstr(char *str);
 int	ft_putchar(char c);
 //novo utils
 int	ft_atoi(const char *str);
 int	ft_print_width(char chr, int i);
-int ft_nbrsize(long long nbr, long long base_n);
+int ft_nbrsize(unsigned long long nbr, unsigned long long base_n);
 
 // novo diverso
 int	ft_convert_c(char c);

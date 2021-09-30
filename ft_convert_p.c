@@ -6,13 +6,13 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:04:12 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/09/30 19:18:02 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/09/30 19:42:39 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_convert_p(long long nbr, long long base_n)
+int	ft_convert_p(unsigned long long nbr, unsigned long long base_n)
 {
 	size_t	print_s;
 	size_t	nbr_s;
