@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:08:14 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/09/30 19:44:47 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/09/30 20:05:12 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ struct s_subspec
 }	t_subspec;
 
 int	ft_printf(const char *format, ...);
-int	ft_convert_d_i(long int nbr, unsigned int base_n);
+int	ft_convert_d_i(long long nbr, long long base_n);
 int	ft_convert_x(unsigned int nbr, unsigned int base_n, char b);
 int ft_convert_u(unsigned int nbr, unsigned int base_n);
 int	ft_convert_p(unsigned long long nbr, unsigned long long base_n);
