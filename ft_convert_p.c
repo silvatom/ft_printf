@@ -6,11 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:04:12 by anjose-d          #+#    #+#             */
-<<<<<<< HEAD
 /*   Updated: 2021/09/30 19:18:02 by anjose-d         ###   ########.fr       */
-=======
-/*   Updated: 2021/09/25 01:47:05 by anjose-d         ###   ########.fr       */
->>>>>>> 23d80c88305c0e212a068b025afdacdfb8e4724d
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +17,6 @@ int	ft_convert_p(long long nbr, long long base_n)
 	size_t	print_s;
 	size_t	nbr_s;
 
-<<<<<<< HEAD
 	nbr_s = ft_nbrsize(nbr, base_n);
 	print_s = 0;
 	// e se nbr for 0?
@@ -74,11 +69,6 @@ int	ft_convert_p(long long nbr, long long base_n)
 		print_s += ft_print_number(nbr, base_n, "0123456789abcdef");
 	}
 	return (print_s);*/
-=======
-	nbr_s = write(1, "0x", 2);
-	nbr_s += ft_print_number(nbr, base_n, "0123456789abcdef");
-	return (nbr_s);
->>>>>>> 23d80c88305c0e212a068b025afdacdfb8e4724d
 }
 
 
