@@ -11,7 +11,9 @@ int	ft_convert_s(char *str)
 	len_str = 0;
 	len_p = 0;
 	len_str = ft_strlen_printf(str);
-	if (t_subspec.precision < len_str && t_subspec.is_dot)
+	/*if (t_subspec.precision < len_str && t_subspec.is_dot)
+		len_str = t_subspec.precision;*/
+	if (t_subspec.is_dot && t_subspec.precision < len_str)
 		len_str = t_subspec.precision;
 	if (t_subspec.width > len_str)
 	{
@@ -61,7 +63,7 @@ int	ft_putnstr(char *str, int size)
 		i = write(1, "(null)", 6);
 		return (i);
 	}
-	while (i < size)
+	while (str[i] && i < size)
 	{
 			write(1, &str[i], 1);
 			i++;

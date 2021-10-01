@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:03:47 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/09/30 20:07:07 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/09/30 23:10:53 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ int	ft_convert_d_i(long long nbr, long long base_n)
 	len_p = 0;
 	tmp = nbr;
 	nbr_len = ft_int_size(nbr, base_n);
-	//if (t_subspec.precision > nbr_len && t_subspec.is_dot /* && nbr_len == 0 */)
-	//	len_p = t_subspec.precision;
+	if (t_subspec.precision > nbr_len || (t_subspec.is_dot && nbr_len == 0))
+		nbr_len = t_subspec.precision;
+	if (nbr < 0)
+		nbr_len++;
 	if (t_subspec.width > nbr_len)
 	{
 		if (t_subspec.is_msign)
@@ -34,10 +36,12 @@ int	ft_convert_d_i(long long nbr, long long base_n)
 			len_p += ft_print_int(nbr, base_n, nbr_len);// o número deve ser printado aqui
 			len_p += ft_print_width(' ', t_subspec.width - len_p);
 			return (len_p);
-		} else if (t_subspec.is_zero)
-			len_p += ft_print_width('0', t_subspec.width - nbr_len);
+		}
+		else if (t_subspec.is_zero && !t_subspec.is_dot)
+			//len_p += ft_print_width('0', t_subspec.width - nbr_len);
+			t_subspec.precision += t_subspec.width;
 		else
-			len_p += ft_print_width(' ', t_subspec.width - len_p/*nbr_len*/ - t_subspec.precision);
+			len_p += ft_print_width(' ', t_subspec.width - nbr_len/* - t_subspec.precision*/);
 	}
 	len_p += ft_print_int(nbr, base_n, nbr_len);
 	//len_p += ft_print_number(nbr, base_n, "0123456789");
@@ -70,7 +74,8 @@ int	ft_print_int(long long nbr, long long base_n, size_t nbr_len)
 	}
 	if (nbr_len < t_subspec.precision)
 		len_p += ft_print_width('0', t_subspec.precision - nbr_len);
-
+	if (nbr == 0 && t_subspec.is_dot /*t_subspec.precision == 0 */)
+		return (0);
 	len_p += ft_print_number(nbr, base_n, "0123456789");
 	return (len_p++);
 }
@@ -81,6 +86,8 @@ int ft_int_size(long long nbr, long long base_n)
 
 	if (nbr < 0)
 		nbr *= (-1);
+	if (nbr == 0)
+		return (1);
 	ret = 0;
 	while (nbr > 0)
 	{

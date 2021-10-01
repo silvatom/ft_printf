@@ -61,7 +61,7 @@ int	ft_atoi(const char *str)
 	i = 0;
 	sign = 1;
 	num = 0;
-	while ((9 <= str[i] && str[i] <= 13) || str[i] == ' ')
+	while ((9 <= str[i] && str[i] <= 13) || str[i] == ' ' || str[i] == '.')
 		i++;
 	if (str[i] == '-')
 		sign = sign * (-1);
@@ -78,7 +78,8 @@ int	ft_atoi(const char *str)
 int	ft_print_width(char chr, int i)
 {
 	int	count;
-
+	//if (t_subspec.is_dot && t_subspec.precision == 0)
+	//	chr = ' ';
 	count = 0;
 	while (i > 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:04:40 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/09/30 19:56:40 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/09/30 21:28:38 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,10 @@ const char *ft_get_subspec(const char *format)
 		t_subspec.is_hash = TRUE;
 	else if (*format == '.')
 	{
-		format++;
 		t_subspec.is_dot = TRUE;
 		t_subspec.precision = ft_atoi(format);
+		while (*(format + 1) >= '0' && *(format + 1) <= '9')
+			format++;
 		return (format);
 	}
 	else if (*format >= '0' && *format <= '9')
