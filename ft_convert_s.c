@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_convert_s.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/04 00:32:37 by anjose-d          #+#    #+#             */
+/*   Updated: 2021/10/04 00:32:58 by anjose-d         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-int	ft_putnstr(char *str, int size);
+int		ft_putnstr(char *str, int size);
 size_t	ft_strlen_printf(char *str);
 
 int	ft_convert_s(char *str)
@@ -11,8 +23,6 @@ int	ft_convert_s(char *str)
 	len_str = 0;
 	len_p = 0;
 	len_str = ft_strlen_printf(str);
-	/*if (t_subspec.precision < len_str && t_subspec.is_dot)
-		len_str = t_subspec.precision;*/
 	if (t_subspec.is_dot && t_subspec.precision < len_str)
 		len_str = t_subspec.precision;
 	if (t_subspec.width > len_str)
@@ -32,41 +42,26 @@ int	ft_convert_s(char *str)
 	}
 	else
 		len_p += ft_putnstr(str, len_str);
-	/*if (t_subspec.is_msign)
-	{
-		if (t_subspec.width > len_str)
-		{
-			len_p += ft_putnstr(str, len_str);
-			len_p += ft_print_width(' ', t_subspec.width - len_str);
-		}
-		else
-			len_p += ft_putnstr(str, len_str);
-	}
-	else
-	{
-		if (t_subspec.is_zero)
-			len_p += ft_print_width('0', t_subspec.width - len_str);
-		else
-			len_p += ft_print_width(' ', t_subspec.width - len_str);
-		len_p += ft_putnstr(str, len_str);
-	}*/
 	return (len_p);
 }
 
 int	ft_putnstr(char *str, int size)
 {
-	int i;
+	int		i;
+	char	*null_str;
 
+	null_str = "(null)";
 	i = 0;
 	if (!str)
 	{
-		i = write(1, "(null)", 6);
+		while (i < size && null_str[i])
+			i += write(1, &null_str[i], 1);
 		return (i);
 	}
 	while (str[i] && i < size)
 	{
-			write(1, &str[i], 1);
-			i++;
+		write(1, &str[i], 1);
+		i++;
 	}
 	return (i);
 }

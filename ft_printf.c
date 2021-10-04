@@ -6,19 +6,19 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:04:40 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/09/30 21:28:38 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/10/04 00:30:14 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_subspec_init(void);
+void		ft_subspec_init(void);
 const char	*ft_subspec(const char *format);
-const char *ft_get_subspec(const char *format);
+const char	*ft_get_subspec(const char *format);
 
 int	ft_fspec(const char *format, va_list args)
 {
-	int flen;
+	int	flen;
 
 	flen = 0;
 	if (*format == 'c')
@@ -54,7 +54,7 @@ int	ft_printf(const char *format, ...)
 			format++;
 			format = ft_subspec(format);
 			if (!*format)
-				break;
+				break ;
 			flen += ft_fspec(format, args);
 			format++;
 		}
@@ -82,9 +82,9 @@ void	ft_subspec_init(void)
 const char	*ft_subspec(const char *format)
 {
 	ft_subspec_init();
-	while (*format && (*format == '-' || *format == '+'	||
-		*format == ' ' || *format == '#' || *format == '.' ||
-		(*format >= '0' && *format <= '9')))
+	while (*format && (*format == '-' || *format == '+'
+			|| *format == ' ' || *format == '#' || *format == '.'
+			|| (*format >= '0' && *format <= '9')))
 	{
 		format = ft_get_subspec(format);
 		format++;
@@ -92,7 +92,7 @@ const char	*ft_subspec(const char *format)
 	return (format);
 }
 
-const char *ft_get_subspec(const char *format)
+const char	*ft_get_subspec(const char *format)
 {
 	if (*format == '-')
 		t_subspec.is_msign = TRUE;

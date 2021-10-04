@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/04 00:24:18 by anjose-d          #+#    #+#             */
+/*   Updated: 2021/10/04 00:29:47 by anjose-d         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 unsigned long long	ft_power(long long number, long int power)
@@ -10,10 +22,10 @@ unsigned long long	ft_power(long long number, long int power)
 
 int	ft_print_number(unsigned long long nbr, unsigned long long base_n, char *base)
 {
-	int			nbr_s;
+	int						nbr_s;
+	int						ret;
 	unsigned long long int	tmp;
 	unsigned long long int	n_print;
-	int			ret;
 
 	if (nbr < 0)
 		nbr *= (-1);
@@ -78,8 +90,7 @@ int	ft_atoi(const char *str)
 int	ft_print_width(char chr, int i)
 {
 	int	count;
-	//if (t_subspec.is_dot && t_subspec.precision == 0)
-	//	chr = ' ';
+
 	count = 0;
 	while (i > 0)
 	{
@@ -89,10 +100,12 @@ int	ft_print_width(char chr, int i)
 	return (count);
 }
 
-int ft_nbrsize(unsigned long long nbr, unsigned long long base_n)
+int	ft_nbrsize(unsigned long long nbr, unsigned long long base_n)
 {
 	size_t	ret;
 
+	if (nbr == 0)
+		return (1);
 	if (nbr < 0)
 		nbr *= (-1);
 	ret = 0;
