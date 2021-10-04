@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:03:47 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/04 00:31:05 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/10/04 15:28:17 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 int	ft_print_int(long long nbr, long long base_n);
 int	ft_int_size(long long nbr, long long base_n);
+int	ft_print_flag(void);
 
 int	ft_convert_d_i(long long nbr, long long base_n)
 {
-	long long int	tmp;
 	size_t			nbr_len;
 	int				len_p;
 
 	len_p = 0;
-	tmp = nbr;
 	nbr_len = ft_int_size(nbr, base_n);
 	if (t_subspec.precision > nbr_len || (t_subspec.is_dot && nbr == 0))
 		nbr_len = t_subspec.precision;
@@ -61,10 +60,7 @@ int	ft_print_int(long long nbr, long long base_n)
 	}
 	else
 	{
-		if (t_subspec.is_space)
-			len_p += write (1, " ", 1);
-		if (t_subspec.is_psign)
-			len_p += write(1, "+", 1);
+		len_p += ft_print_flag();
 		if (t_subspec.is_space)
 			nbr_len++;
 	}
@@ -91,4 +87,16 @@ int	ft_int_size(long long nbr, long long base_n)
 		ret++;
 	}
 	return (ret);
+}
+
+int	ft_print_flag(void)
+{
+	int	len_p;
+
+	len_p = 0;
+	if (t_subspec.is_space)
+		len_p += write (1, " ", 1);
+	if (t_subspec.is_psign)
+		len_p += write(1, "+", 1);
+	return (len_p);
 }

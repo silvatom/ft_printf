@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 00:32:37 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/04 00:32:58 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/10/04 15:49:27 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	ft_convert_s(char *str)
 	size_t	len_str;
 	size_t	len_p;
 
-	len_str = 0;
 	len_p = 0;
 	len_str = ft_strlen_printf(str);
 	if (t_subspec.is_dot && t_subspec.precision < len_str)

@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:04:40 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/04 00:30:14 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/10/04 16:01:26 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,14 +110,12 @@ const char	*ft_get_subspec(const char *format)
 		t_subspec.precision = ft_atoi(format);
 		while (*(format + 1) >= '0' && *(format + 1) <= '9')
 			format++;
-		return (format);
 	}
 	else if (*format >= '0' && *format <= '9')
 	{
 		t_subspec.width = ft_atoi(format);
 		while (*(format + 1) >= '0' && *(format + 1) <= '9')
 			format++;
-		return (format);
 	}
 	return (format);
 }

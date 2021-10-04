@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 00:33:29 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/04 00:33:54 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/10/04 15:50:21 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ int	ft_convert_u(unsigned int nbr, unsigned int base_n)
 {
 	int				len_p;
 	size_t			nbr_len;
-	long long int	tmp;
 
 	len_p = 0;
-	tmp = nbr;
 	nbr_len = ft_u_size(nbr, base_n);
 	if (t_subspec.precision > nbr_len || (t_subspec.is_dot && nbr == 0))
 		nbr_len = t_subspec.precision;

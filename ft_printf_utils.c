@@ -6,13 +6,13 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 00:24:18 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/04 00:29:47 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/10/04 16:38:53 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-unsigned long long	ft_power(long long number, long int power)
+t_ull_type	ft_power(long long number, long int power)
 {
 	if (power == 0)
 		return (1);
@@ -20,12 +20,12 @@ unsigned long long	ft_power(long long number, long int power)
 	return (number);
 }
 
-int	ft_print_number(unsigned long long nbr, unsigned long long base_n, char *base)
+int	ft_print_number(t_ull_type nbr, t_ull_type base_n, char *base)
 {
-	int						nbr_s;
-	int						ret;
-	unsigned long long int	tmp;
-	unsigned long long int	n_print;
+	int			nbr_s;
+	int			ret;
+	t_ull_type	tmp;
+	t_ull_type	n_print;
 
 	if (nbr < 0)
 		nbr *= (-1);
@@ -47,46 +47,6 @@ int	ft_print_number(unsigned long long nbr, unsigned long long base_n, char *bas
 	return (ret);
 }
 
-int	ft_putstr(char *str)
-{
-	int	i;
-
-	if (!str)
-		return (write(1, "(null)", 6));
-	i = 0;
-	while (str[i])
-		write(1, &str[i++], 1);
-	return (i);
-}
-
-int	ft_putchar(char c)
-{
-	return (write(1, &c, 1));
-}
-
-int	ft_atoi(const char *str)
-{
-	int	i;
-	int	sign;
-	int	num;
-
-	i = 0;
-	sign = 1;
-	num = 0;
-	while ((9 <= str[i] && str[i] <= 13) || str[i] == ' ' || str[i] == '.')
-		i++;
-	if (str[i] == '-')
-		sign = sign * (-1);
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while ('0' <= str[i] && str[i] <= '9')
-	{
-		num = (num * 10) + (str[i] - '0');
-		i++;
-	}
-	return (num * sign);
-}
-
 int	ft_print_width(char chr, int i)
 {
 	int	count;
@@ -98,21 +58,4 @@ int	ft_print_width(char chr, int i)
 		i--;
 	}
 	return (count);
-}
-
-int	ft_nbrsize(unsigned long long nbr, unsigned long long base_n)
-{
-	size_t	ret;
-
-	if (nbr == 0)
-		return (1);
-	if (nbr < 0)
-		nbr *= (-1);
-	ret = 0;
-	while (nbr > 0)
-	{
-		nbr /= base_n;
-		ret++;
-	}
-	return (ret);
 }

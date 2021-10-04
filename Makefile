@@ -12,6 +12,10 @@ SRCS=	ft_printf.c \
 		ft_convert_d_i.c \
 		ft_convert_c.c \
 		ft_convert_s.c \
+		ft_nbrsize.c \
+		ft_atoi.c \
+		ft_putchar.c \
+		ft_putstr.c
 
 OBJS=	$(SRCS:.c=.o)
 
