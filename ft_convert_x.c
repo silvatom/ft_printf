@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 22:03:17 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/04 00:29:14 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/10/04 14:39:08 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ int	ft_print_hexa(unsigned int nbr, char c)
 
 	ret = 0;
 	nbr_s = ft_nbrsize(nbr, 16);
-	if (nbr == 0)
-		nbr_s++;
 	if (t_subspec.is_hash && nbr > 0) //pq nbr > 0?
 	{
 		write(1, "0", 1);
