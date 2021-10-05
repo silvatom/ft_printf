@@ -6,30 +6,30 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 00:19:13 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/04 00:19:14 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/10/04 20:20:26 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_convert_c(char c)
+int	ft_convert_c(char c, t_subspec *flags)
 {
 	int	len_p;
 
 	len_p = 0;
-	if (t_subspec.width > 1)
+	if (flags->width > 1)
 	{
-		if (t_subspec.is_msign)
+		if (flags->is_msign)
 		{
 			len_p += write(1, &c, 1);
-			len_p += ft_print_width(' ', t_subspec.width - 1);
+			len_p += ft_print_width(' ', flags->width - 1);
 		}
 		else
 		{
-			if (t_subspec.is_zero)
-				len_p += ft_print_width('0', t_subspec.width - 1);
+			if (flags->is_zero)
+				len_p += ft_print_width('0', flags->width - 1);
 			else
-				len_p += ft_print_width(' ', t_subspec.width - 1);
+				len_p += ft_print_width(' ', flags->width - 1);
 			len_p += write(1, &c, 1);
 			return (len_p);
 		}

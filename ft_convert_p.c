@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:04:12 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/04 15:59:01 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/10/04 19:52:48 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static size_t	ft_hexa_printing(t_ull_type nbr, t_ull_type base_n);
 
-int	ft_convert_p(t_ull_type nbr, t_ull_type base_n)
+int	ft_convert_p(t_ull_type nbr, t_ull_type base_n, t_subspec *flags)
 {
 	size_t	print_s;
 	size_t	nbr_s;
@@ -22,18 +22,18 @@ int	ft_convert_p(t_ull_type nbr, t_ull_type base_n)
 	nbr_s = 2;
 	nbr_s += ft_nbrsize(nbr, base_n);
 	print_s = 0;
-	if (t_subspec.width > nbr_s)
+	if (flags->width > nbr_s)
 	{
-		if (t_subspec.is_msign)
+		if (flags->is_msign)
 		{
 			print_s += ft_hexa_printing(nbr, base_n);
-			print_s += ft_print_width(' ', t_subspec.width - nbr_s);
+			print_s += ft_print_width(' ', flags->width - nbr_s);
 			return (print_s);
 		}
-		else if (t_subspec.is_zero)
-			print_s += ft_print_width('0', t_subspec.width - nbr_s);
+		else if (flags->is_zero)
+			print_s += ft_print_width('0', flags->width - nbr_s);
 		else
-			print_s += ft_print_width(' ', t_subspec.width - nbr_s);
+			print_s += ft_print_width(' ', flags->width - nbr_s);
 		print_s += ft_hexa_printing(nbr, base_n);
 	}
 	else

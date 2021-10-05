@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 00:32:37 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/04 15:49:27 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/10/04 19:54:34 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,29 @@
 int		ft_putnstr(char *str, int size);
 size_t	ft_strlen_printf(char *str);
 
-int	ft_convert_s(char *str)
+int	ft_convert_s(char *str, t_subspec *flags)
 {
 	size_t	len_str;
 	size_t	len_p;
 
 	len_p = 0;
 	len_str = ft_strlen_printf(str);
-	if (t_subspec.is_dot && t_subspec.precision < len_str)
-		len_str = t_subspec.precision;
-	if (t_subspec.width > len_str)
+	if (flags->is_dot && flags->precision < len_str)
+		len_str = flags->precision;
+	if (flags->width > len_str)
 	{
-		if (t_subspec.is_msign)
+		if (flags->is_msign)
 		{
 			len_p += ft_putnstr(str, len_str);
-			len_p += ft_print_width(' ', t_subspec.width - len_str);
+			len_p += ft_print_width(' ', flags->width - len_str);
 			return (len_p);
 		}
-		else if (t_subspec.is_zero)
-			ft_print_width('0', t_subspec.width - len_str);
+		else if (flags->is_zero)
+			ft_print_width('0', flags->width - len_str);
 		else
-			ft_print_width(' ', t_subspec.width - len_str);
+			ft_print_width(' ', flags->width - len_str);
 		ft_putnstr(str, len_str);
-		len_p = t_subspec.width;
+		len_p = flags->width;
 	}
 	else
 		len_p += ft_putnstr(str, len_str);

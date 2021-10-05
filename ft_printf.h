@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:08:14 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/04 16:27:26 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/10/04 19:47:39 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef enum e_bool {
 
 typedef unsigned long long int	t_ull_type;
 
-struct s_subspec
+typedef struct s_subspec
 {
 	t_bool	is_msign;
 	t_bool	is_psign;
@@ -36,10 +36,10 @@ struct s_subspec
 }	t_subspec;
 
 int			ft_printf(const char *format, ...);
-int			ft_convert_d_i(long long nbr, long long base_n);
-int			ft_convert_x(unsigned int nbr, unsigned int base_n, char x);
-int			ft_convert_u(unsigned int nbr, unsigned int base_n);
-int			ft_convert_p(t_ull_type nbr, t_ull_type base_n);
+int			ft_convert_d_i(long long nbr, long long base_n, t_subspec *flags);
+int			ft_convert_x(unsigned int nbr, unsigned int base_n, char x, t_subspec *flags);
+int			ft_convert_u(unsigned int nbr, unsigned int base_n, t_subspec *flags);
+int			ft_convert_p(t_ull_type nbr, t_ull_type base_n, t_subspec *flags);
 
 t_ull_type	ft_power(long long number, long int power);
 int			ft_print_number(t_ull_type nbr, t_ull_type base_n, char *base);
@@ -51,7 +51,7 @@ int			ft_print_width(char chr, int i);
 int			ft_nbrsize(unsigned long long nbr, unsigned long long base_n);
 
 // novo diverso
-int			ft_convert_c(char c);
-int			ft_convert_s(char *str);
+int			ft_convert_c(char c, t_subspec *flags);
+int			ft_convert_s(char *str, t_subspec *flags);
 
 #endif
