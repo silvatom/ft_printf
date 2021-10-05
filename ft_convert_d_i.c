@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:03:47 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/04 19:51:25 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/10/04 22:56:27 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	ft_print_int(long long nbr, long long base_n, t_subspec *flags)
 	if (nbr == 0 && flags->is_dot && flags->precision == 0)
 		return (0);
 	len_p += ft_print_number(nbr, base_n, "0123456789");
-	return (len_p++);
+	return (len_p);
 }
 
 int	ft_int_size(long long nbr, long long base_n)

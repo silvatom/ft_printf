@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:08:14 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/04 19:47:39 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/10/04 23:07:05 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef enum e_bool {
 }			t_bool;
 
 typedef unsigned long long int	t_ull_type;
+typedef unsigned int			t_uint;
 
 typedef struct s_subspec
 {
@@ -37,8 +38,8 @@ typedef struct s_subspec
 
 int			ft_printf(const char *format, ...);
 int			ft_convert_d_i(long long nbr, long long base_n, t_subspec *flags);
-int			ft_convert_x(unsigned int nbr, unsigned int base_n, char x, t_subspec *flags);
-int			ft_convert_u(unsigned int nbr, unsigned int base_n, t_subspec *flags);
+int			ft_convert_x(t_uint nbr, t_uint base_n, char x, t_subspec *flags);
+int			ft_convert_u(t_uint nbr, t_uint base_n, t_subspec *flags);
 int			ft_convert_p(t_ull_type nbr, t_ull_type base_n, t_subspec *flags);
 
 t_ull_type	ft_power(long long number, long int power);

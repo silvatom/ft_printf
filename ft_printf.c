@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:04:40 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/04 22:00:25 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/10/04 23:07:20 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ int	ft_fspec(const char *format, va_list args, t_subspec *flags)
 	else if (*format == 'u')
 		flen += ft_convert_u(va_arg(args, int), 10, flags);
 	else if (*format == 'x')
-		flen += ft_convert_x(va_arg(args, unsigned int), 16, 'x', flags);
+		flen += ft_convert_x(va_arg(args, t_uint), 16, 'x', flags);
 	else if (*format == 'X')
-		flen += ft_convert_x(va_arg(args, unsigned int), 16, 'X', flags);
+		flen += ft_convert_x(va_arg(args, t_uint), 16, 'X', flags);
 	else if (*format == '%')
 		flen += write(1, "%", 1);
 	return (flen);
@@ -43,7 +43,7 @@ int	ft_fspec(const char *format, va_list args, t_subspec *flags)
 int	ft_printf(const char *format, ...)
 {
 	va_list			args;
-	unsigned int	flen;
+	t_uint			flen;
 	t_subspec		subspec;
 
 	va_start(args, format);
