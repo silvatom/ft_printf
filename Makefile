@@ -1,39 +1,55 @@
-NAME=	libftprintf.a
+NAME=		libftprintf.a
 
-CC=		clang
+CC=			clang
 
-FLAGS=	-Wall -Wextra -Werror
+FLAGS=		-Wall -Wextra -Werror
 
-SRCS=	ft_printf.c \
-		ft_printf_utils.c \
-		ft_convert_p.c \
-		ft_convert_x.c \
-		ft_convert_u.c \
-		ft_convert_d_i.c \
-		ft_convert_c.c \
-		ft_convert_s.c \
-		ft_nbrsize.c \
-		ft_atoi.c \
-		ft_putchar.c \
-		ft_putstr.c
+LIBFT_DIR=	./libft
+LIBFT=		$(LIBFT_DIR)/libft.a
+LIBFT_SRCS=	$(LIBFT_DIR)/ft_atoi.c \
+			$(LIBFT_DIR)/ft_putchar.c \
+			$(LIBFT_DIR)/ft_nbrsize.c \
+			$(LIBFT_DIR)/ft_putstr.c \
+			$(LIBFT_DIR)/ft_power.c
 
-OBJS=	$(SRCS:.c=.o)
+LIBFT_INC=	$(LIBFT_DIR)/libft.h
 
-HEADER=	ft_printf.h
+SRCS_DIR=	./srcs
+SRCS=		$(SRCS_DIR)/ft_printf.c \
+			$(SRCS_DIR)/ft_printf_utils.c \
+			$(SRCS_DIR)/ft_convert_p.c \
+			$(SRCS_DIR)/ft_convert_x.c \
+			$(SRCS_DIR)/ft_convert_u.c \
+			$(SRCS_DIR)/ft_convert_d_i.c \
+			$(SRCS_DIR)/ft_convert_c.c \
+			$(SRCS_DIR)/ft_convert_s.c \
 
-%.o: %.c $(HEADER)
-	$(CC) $(FLAGS) -c $< -o $@
+PRINTF_INC=	./includes/
+
+OBJS=		$(SRCS:.c=.o)
+LIBFT_OBJS=	$(LIBFT_SRCS:.c=.o)
+INCS=		-I$(LIBFT_DIR) -I$(PRINTF_INC)
+
+HEADER=		ft_printf.h
+
+%.o: %.c
+	$(CC) $(FLAGS) $(INCS) -c $< -o $@
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(HEADER)
+$(LIBFT): $(LIBFT_OBJS)
+	ar -rcs $(LIBFT) $(LIBFT_OBJS)
+	cp $(LIBFT) $(NAME)
+
+$(NAME): $(OBJS) $(LIBFT)
 	ar -rcs $(NAME) $(OBJS)
+	ranlib $(NAME)
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(LIBFT_OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(LIBFT)
 
 re: fclean all
 

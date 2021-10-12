@@ -6,17 +6,17 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:04:40 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/04 23:07:20 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/10/12 10:06:40 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
-void		ft_subspec_init(t_subspec *flags);
-const char	*ft_subspec(const char *format, t_subspec *flags);
-const char	*ft_get_subspec(const char *format, t_subspec *flags);
+static void			ft_subspec_init(t_subspec *flags);
+static const char	*ft_subspec(const char *format, t_subspec *flags);
+static const char	*ft_get_subspec(const char *format, t_subspec *flags);
 
-int	ft_fspec(const char *format, va_list args, t_subspec *flags)
+static int	ft_fspec(const char *format, va_list args, t_subspec *flags)
 {
 	int	flen;
 
@@ -68,7 +68,7 @@ int	ft_printf(const char *format, ...)
 	return (flen);
 }
 
-void	ft_subspec_init(t_subspec *flags)
+static void	ft_subspec_init(t_subspec *flags)
 {
 	flags->is_dot = FALSE;
 	flags->is_msign = FALSE;
@@ -81,7 +81,7 @@ void	ft_subspec_init(t_subspec *flags)
 	flags->precision = 0;
 }
 
-const char	*ft_subspec(const char *format, t_subspec *flags)
+static const char	*ft_subspec(const char *format, t_subspec *flags)
 {
 	ft_subspec_init(flags);
 	while (*format && (*format == '-' || *format == '+'
@@ -94,7 +94,7 @@ const char	*ft_subspec(const char *format, t_subspec *flags)
 	return (format);
 }
 
-const char	*ft_get_subspec(const char *format, t_subspec *flags)
+static const char	*ft_get_subspec(const char *format, t_subspec *flags)
 {
 	if (*format == '-')
 		flags->is_msign = TRUE;

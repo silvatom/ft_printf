@@ -6,19 +6,11 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 00:24:18 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/04 16:38:53 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/10/12 09:22:46 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-t_ull_type	ft_power(long long number, long int power)
-{
-	if (power == 0)
-		return (1);
-	number *= ft_power(number, power - 1);
-	return (number);
-}
+#include "libftprintf.h"
 
 int	ft_print_number(t_ull_type nbr, t_ull_type base_n, char *base)
 {

@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_power.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/04 16:41:06 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/04 16:47:02 by anjose-d         ###   ########.fr       */
+/*   Created: 2021/10/12 09:46:10 by anjose-d          #+#    #+#             */
+/*   Updated: 2021/10/12 09:46:11 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+t_ull_type	ft_power(long long number, long int power)
 {
-	int	n;
-
-	n = write(1, &c, 1);
-	return (n);
+	if (power == 0)
+		return (1);
+	number *= ft_power(number, power - 1);
+	return (number);
 }

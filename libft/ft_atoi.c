@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/04 16:40:29 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/04 16:41:09 by anjose-d         ###   ########.fr       */
+/*   Created: 2021/10/04 16:40:25 by anjose-d          #+#    #+#             */
+/*   Updated: 2021/10/12 09:15:47 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putstr(char *str)
+int	ft_atoi(const char *str)
 {
 	int	i;
+	int	sign;
+	int	num;
 
-	if (!str)
-		return (write(1, "(null)", 6));
 	i = 0;
-	while (str[i])
-		write(1, &str[i++], 1);
-	return (i);
+	sign = 1;
+	num = 0;
+	while ((9 <= str[i] && str[i] <= 13) || str[i] == ' ' || str[i] == '.')
+		i++;
+	if (str[i] == '-')
+		sign = sign * (-1);
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while ('0' <= str[i] && str[i] <= '9')
+	{
+		num = (num * 10) + (str[i] - '0');
+		i++;
+	}
+	return (num * sign);
 }

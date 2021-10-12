@@ -6,15 +6,15 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:03:47 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/04 22:56:27 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/10/12 09:50:13 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
-int	ft_print_int(long long nbr, long long base_n, t_subspec *flags);
-int	ft_int_size(long long nbr, long long base_n);
-int	ft_print_flag(t_subspec *flags);
+static int	ft_print_int(long long nbr, long long base_n, t_subspec *flags);
+static int	ft_int_size(long long nbr, long long base_n);
+static int	ft_print_flag(t_subspec *flags);
 
 int	ft_convert_d_i(long long nbr, long long base_n, t_subspec *flags)
 {
@@ -44,7 +44,7 @@ int	ft_convert_d_i(long long nbr, long long base_n, t_subspec *flags)
 	return (len_p);
 }
 
-int	ft_print_int(long long nbr, long long base_n, t_subspec *flags)
+static int	ft_print_int(long long nbr, long long base_n, t_subspec *flags)
 {
 	int		len_p;
 	size_t	nbr_len;
@@ -72,7 +72,7 @@ int	ft_print_int(long long nbr, long long base_n, t_subspec *flags)
 	return (len_p);
 }
 
-int	ft_int_size(long long nbr, long long base_n)
+static int	ft_int_size(long long nbr, long long base_n)
 {
 	size_t	ret;
 
@@ -89,7 +89,7 @@ int	ft_int_size(long long nbr, long long base_n)
 	return (ret);
 }
 
-int	ft_print_flag(t_subspec *flags)
+static int	ft_print_flag(t_subspec *flags)
 {
 	int	len_p;
 

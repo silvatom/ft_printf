@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbrsize.c                                       :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/04 16:40:50 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/04 16:40:50 by anjose-d         ###   ########.fr       */
+/*   Created: 2021/10/04 16:41:06 by anjose-d          #+#    #+#             */
+/*   Updated: 2021/10/12 05:13:07 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_nbrsize(t_ull_type nbr, t_ull_type base_n)
+int	ft_putchar(char c)
 {
-	size_t	ret;
+	int	n;
 
-	if (nbr == 0)
-		return (1);
-	if (nbr < 0)
-		nbr *= (-1);
-	ret = 0;
-	while (nbr > 0)
-	{
-		nbr /= base_n;
-		ret++;
-	}
-	return (ret);
+	n = write(1, &c, 1);
+	return (n);
 }

@@ -6,15 +6,15 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 22:03:17 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/04 23:02:11 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/10/12 09:51:33 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
-int	ft_print_hex(t_uint nbr, char c, t_subspec *flags);
-int	ft_put_nbr_hexa(t_uint nbr, char x, t_subspec *flags);
-int	ft_hexa_printing(t_uint nbr, char x, t_subspec *flags);
+static int	ft_print_hex(t_uint nbr, char c, t_subspec *flags);
+static int	ft_put_nbr_hexa(t_uint nbr, char x, t_subspec *flags);
+static int	ft_hexa_printing(t_uint nbr, char x, t_subspec *flags);
 
 int	ft_convert_x(t_uint nbr, t_uint base_n, char x, t_subspec *flags)
 {
@@ -44,7 +44,7 @@ int	ft_convert_x(t_uint nbr, t_uint base_n, char x, t_subspec *flags)
 	return (print_s);
 }
 
-int	ft_print_hex(t_uint nbr, char c, t_subspec *flags)
+static int	ft_print_hex(t_uint nbr, char c, t_subspec *flags)
 {
 	int		ret;
 	size_t	nbr_s;
@@ -65,7 +65,7 @@ int	ft_print_hex(t_uint nbr, char c, t_subspec *flags)
 	return (ret);
 }
 
-int	ft_put_nbr_hexa(t_uint nbr, char x, t_subspec *flags)
+static int	ft_put_nbr_hexa(t_uint nbr, char x, t_subspec *flags)
 {
 	int	ret;
 
@@ -79,7 +79,7 @@ int	ft_put_nbr_hexa(t_uint nbr, char x, t_subspec *flags)
 	return (ret);
 }
 
-int	ft_hexa_printing(t_uint nbr, char x, t_subspec *flags)
+static int	ft_hexa_printing(t_uint nbr, char x, t_subspec *flags)
 {
 	int	size_print;
 

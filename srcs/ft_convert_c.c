@@ -6,11 +6,11 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 00:19:13 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/04 20:20:26 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/10/12 05:17:37 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 int	ft_convert_c(char c, t_subspec *flags)
 {

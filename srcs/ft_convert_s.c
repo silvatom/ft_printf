@@ -6,14 +6,14 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 00:32:37 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/04 19:54:34 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/10/12 09:50:50 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
-int		ft_putnstr(char *str, int size);
-size_t	ft_strlen_printf(char *str);
+static int		ft_putnstr(char *str, int size);
+static size_t	ft_strlen_printf(char *str);
 
 int	ft_convert_s(char *str, t_subspec *flags)
 {
@@ -44,7 +44,7 @@ int	ft_convert_s(char *str, t_subspec *flags)
 	return (len_p);
 }
 
-int	ft_putnstr(char *str, int size)
+static int	ft_putnstr(char *str, int size)
 {
 	int		i;
 	char	*null_str;
@@ -65,7 +65,7 @@ int	ft_putnstr(char *str, int size)
 	return (i);
 }
 
-size_t	ft_strlen_printf(char *str)
+static size_t	ft_strlen_printf(char *str)
 {
 	size_t	len;
 

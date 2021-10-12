@@ -6,14 +6,14 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 00:33:29 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/04 23:01:34 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/10/12 09:51:08 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
-int	ft_print_u(long long nbr, long long base_n, t_subspec *flags);
-int	ft_u_size(long long nbr, long long base_n);
+static int	ft_print_u(long long nbr, long long base_n, t_subspec *flags);
+static int	ft_u_size(long long nbr, long long base_n);
 
 int	ft_convert_u(t_uint nbr, t_uint base_n, t_subspec *flags)
 {
@@ -43,7 +43,7 @@ int	ft_convert_u(t_uint nbr, t_uint base_n, t_subspec *flags)
 	return (len_p);
 }
 
-int	ft_print_u(long long nbr, long long base_n, t_subspec *flags)
+static int	ft_print_u(long long nbr, long long base_n, t_subspec *flags)
 {
 	int		len_p;
 	size_t	nbr_len;
@@ -64,7 +64,7 @@ int	ft_print_u(long long nbr, long long base_n, t_subspec *flags)
 	return (len_p++);
 }
 
-int	ft_u_size(long long nbr, long long base_n)
+static int	ft_u_size(long long nbr, long long base_n)
 {
 	size_t	ret;
 

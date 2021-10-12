@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/04 16:40:25 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/04 16:40:26 by anjose-d         ###   ########.fr       */
+/*   Created: 2021/10/12 09:45:15 by anjose-d          #+#    #+#             */
+/*   Updated: 2021/10/12 09:46:33 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef LIBFT_H
+# define LIBFT_H
 
-int	ft_atoi(const char *str)
-{
-	int	i;
-	int	sign;
-	int	num;
+# include "../includes/deftypes.h"
 
-	i = 0;
-	sign = 1;
-	num = 0;
-	while ((9 <= str[i] && str[i] <= 13) || str[i] == ' ' || str[i] == '.')
-		i++;
-	if (str[i] == '-')
-		sign = sign * (-1);
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while ('0' <= str[i] && str[i] <= '9')
-	{
-		num = (num * 10) + (str[i] - '0');
-		i++;
-	}
-	return (num * sign);
-}
+int			ft_atoi(const char *str);
+int			ft_nbrsize(t_ull_type nbr, t_ull_type base_n);
+int			ft_putchar(char c);
+int			ft_putstr(char *str);
+t_ull_type	ft_power(long long number, long int power);
+
+#endif
