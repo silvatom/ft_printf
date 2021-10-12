@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:08:14 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/12 10:05:20 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/10/12 10:45:19 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define LIBFTPRINTF_H
 
 # include "../libft/libft.h"
+
+# if __APPLE__
+#  define IS_MACOS 1
+# else
+#  define IS_MACOS 0
+# endif
 
 int			ft_printf(const char *format, ...);
 int			ft_convert_d_i(long long nbr, long long base_n, t_subspec *flags);

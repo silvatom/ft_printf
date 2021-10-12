@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:04:12 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/12 05:13:51 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/10/12 10:47:27 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ static size_t	ft_hexa_printing(t_ull_type nbr, t_ull_type base_n)
 {
 	int	print_s;
 
+	if (!nbr && !IS_MACOS)
+	{
+		print_s = ft_putstr("(nil)");
+		return (print_s);
+	}
 	print_s = 0;
 	print_s += write(1, "0x", 2);
 	print_s += ft_print_number(nbr, base_n, "0123456789abcdef");
