@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:04:40 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/12 10:06:40 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/10/14 19:16:30 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	ft_printf(const char *format, ...)
 			format++;
 		}
 	}
+	va_end(args);
 	return (flen);
 }
 
