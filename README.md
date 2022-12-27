@@ -43,7 +43,8 @@ And some field width flags
 
 
 ## How to Use
-
+To use any format specifier, follow this prototype:
+%[flags][width][.precision][length]specifier
 
 
 ## References
