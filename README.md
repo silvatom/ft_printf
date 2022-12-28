@@ -77,5 +77,5 @@ cc main.c -I includes/ -lftprintf -L. -o bin
 ```
 
 ## References
-[**C++ printf reference**](https://cplusplus.com/reference/cstdio/printf/)
-[**Secrets of printf**](#docs/secrets-of-printf.pdf)
+* [**C++ printf reference**](https://cplusplus.com/reference/cstdio/printf/)
+* [**Secrets of printf**](docs/secrets-of-printf.pdf)
