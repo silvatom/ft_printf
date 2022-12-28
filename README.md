@@ -43,9 +43,39 @@ And some field width flags
 
 
 ## How to Use
-To use any format specifier, follow this prototype:
-%[flags][width][.precision][length]specifier
 
+- Clone the repo: 
+```
+ git@github.com:silvatom/ft_printf.git
+ cd ft_printf/
+ make
+```
+
+> `make` command will create a static library called `libftprintf.a`
+
+- Use this `main.c` example:
+```c
+#include  "libftprintf.h"
+
+int  main(void)
+{
+	ft_printf("Hello, world!\n");
+
+	return (0);
+}
+```
+- Compilation line: (*currently working directory being `./ft_printf`*)
+
+```bash
+cc main.c -I includes/ -lftprintf -L. -o bin
+./bin
+```
+
+- Use this string pattern to test any format specifier:
+```
+%[flags][width][.precision][length]specifier
+```
 
 ## References
-https://cplusplus.com/reference/cstdio/printf/
+[**C++ printf reference**](https://cplusplus.com/reference/cstdio/printf/)
+[**Secrets of printf**](#docs/secrets-of-printf.pdf)
