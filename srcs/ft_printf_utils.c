@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 00:24:18 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/10/12 09:22:46 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/12/28 10:05:02 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int	ft_print_number(t_ull_type nbr, t_ull_type base_n, char *base)
 	t_ull_type	tmp;
 	t_ull_type	n_print;
 
-	if (nbr < 0)
-		nbr *= (-1);
 	nbr_s = 1;
 	ret = 0;
 	tmp = nbr;
